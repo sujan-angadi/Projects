@@ -1,4 +1,6 @@
-from tkinter import *
+#follow vyom.coder on instagram for more projects
+
+from tkinter import * #to install tkinter in your computer use pip install tk
 import tkinter.messagebox as msg
 import random
 
