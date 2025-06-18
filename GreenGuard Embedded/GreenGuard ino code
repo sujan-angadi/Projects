@@ -108,8 +108,9 @@ void loop() {
   delay(1000);
 }
 
-//Your letter functions:
+//letter fucntions:
 
+//Animal letter
 void A_letter() {
   digitalWrite(ano_pin, HIGH);
   digitalWrite(a, LOW);
@@ -121,6 +122,7 @@ void A_letter() {
   digitalWrite(g, LOW);
 }
 
+//healthy letter
 void H_letter() {
   digitalWrite(ano_pin, HIGH);
   digitalWrite(a, HIGH);
@@ -132,6 +134,7 @@ void H_letter() {
   digitalWrite(g, LOW);
 }
 
+//Dry letter
 void D_letter() {
   digitalWrite(ano_pin, HIGH);
   digitalWrite(a, LOW);
@@ -143,6 +146,7 @@ void D_letter() {
   digitalWrite(g, HIGH);
 }
 
+//Wet letter
 void W_letter() {
   digitalWrite(ano_pin, HIGH);
   digitalWrite(a, LOW);
