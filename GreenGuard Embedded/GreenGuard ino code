@@ -71,17 +71,19 @@ void loop() {
 
   //THIS CODE IS FOR SOIL MOISTUE
   int val = analogRead(pin);
-  if (val >= 1000){
+  if (val >= 800){
     Serial.println("Dry Land");
     D_letter();
     digitalWrite(13, LOW);
-  }
-
-  //CODE FOR BOTH HEALTHY AND GREEN LIGHT
-  if (val >= 400 && val <= 600){
+  } else if (val >= 100 && val <= 800){
     Serial.println("Healthy Land");
     H_letter();
     digitalWrite(13, HIGH);
+  } else {
+        Serial.println("Wet Land");
+    W_letter();
+    digitalWrite(13, LOW);
+
   }
 
   //ANIMAL CODE
@@ -91,26 +93,21 @@ void loop() {
   } 
 
   //THIS IS SOIL CODE ALSO
-  if (val < 400){
-    Serial.println("Wet Land");
-    W_letter();
-    digitalWrite(13, LOW);
-  } 
+
 
   //THIS IS TEMPERATURE CODE
-  int tempVal = analogRead(lm35);
-  float millivolts = tempVal * (5000.0 / 1023.0);
-  float celsius = millivolts / 10.0;
-  Serial.print("Temperature: ");
-  Serial.print(celsius);
-  Serial.println(" C");
+int tempVal = analogRead(lm35);
+float voltage = tempVal * (5.0 / 1023.0);  
+float celsius = voltage * 100.0;           
+Serial.print("Temperature: ");
+Serial.print(celsius);
+Serial.println(" °C");
 
   delay(1000);
 }
 
-//letter fucntions:
+//Your letter functions:
 
-//Animal letter
 void A_letter() {
   digitalWrite(ano_pin, HIGH);
   digitalWrite(a, LOW);
@@ -122,7 +119,6 @@ void A_letter() {
   digitalWrite(g, LOW);
 }
 
-//healthy letter
 void H_letter() {
   digitalWrite(ano_pin, HIGH);
   digitalWrite(a, HIGH);
@@ -134,7 +130,6 @@ void H_letter() {
   digitalWrite(g, LOW);
 }
 
-//Dry letter
 void D_letter() {
   digitalWrite(ano_pin, HIGH);
   digitalWrite(a, LOW);
@@ -146,7 +141,6 @@ void D_letter() {
   digitalWrite(g, HIGH);
 }
 
-//Wet letter
 void W_letter() {
   digitalWrite(ano_pin, HIGH);
   digitalWrite(a, LOW);
@@ -157,4 +151,3 @@ void W_letter() {
   digitalWrite(f, LOW);
   digitalWrite(g, LOW);
 }
-
